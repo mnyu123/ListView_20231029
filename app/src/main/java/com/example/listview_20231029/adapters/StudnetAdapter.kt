@@ -17,10 +17,10 @@ class StudnetAdapter(
     // 어댑터 클래스가 생성자에게 부모(studentData)에게서 받아오게
 
     // ListView 커스텀 작업도 여기서 한다.
-    val mContext : Context,
-    val resID : Int,
-    val mList : ArrayList<StudnetData>
-) : ArrayAdapter<StudnetData>(mContext,resID,mList) {
+    val mContext: Context,
+    val resID: Int,
+    val mList: ArrayList<StudnetData>
+) : ArrayAdapter<StudnetData>(mContext, resID, mList) {
     // 커스텀으로 만든 xml을 -> 코틀린에서 끌어와주는 객체 작성
     val inf = LayoutInflater.from(mContext)
 
@@ -29,9 +29,9 @@ class StudnetAdapter(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var tempRow = convertView
 
-        if(tempRow == null){
-                                                   // 레이아웃 ,  부가정보
-            tempRow = inf.inflate(R.layout.student_list_item , null)
+        if (tempRow == null) {
+            // 레이아웃 ,  부가정보
+            tempRow = inf.inflate(R.layout.student_list_item, null)
         }
         // row = xml을 그려낸 객체 변수
         val row = tempRow!!
@@ -53,7 +53,8 @@ class StudnetAdapter(
         txtPhoneNum.text = stdData.phoneNum
 
         // 계산이 가능하다.
-        txtAge.text = "(${2023-stdData.birthYear+1}세)"
+//        txtAge.text = "(${2023 - stdData.birthYear + 1}세)"
+        txtAge.text = "(${stdData.getKoreanAge(2023)})세"
 
         return row
     }

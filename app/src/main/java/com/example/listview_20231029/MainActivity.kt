@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         mStudentList.add(StudnetData("박진우", 1999, "010-7777-7777"))
         mStudentList.add(StudnetData("우승진", 1999, "010-5877-8585"))
         mStudentList.add(StudnetData("임홍인", 1999, "010-1010-2350"))
+        mStudentList.add(StudnetData("테스트", 2000))
 
 
     }
