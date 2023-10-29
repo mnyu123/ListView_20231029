@@ -27,14 +27,19 @@ class StudnetAdapter(
 
     // 완성한 inf를 이용해서 xml을 가져오는 함수 작성
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                                    // View? <- ? 이거는 타입중에 null이 있을수도 있으니 감안하고 코딩해라 라는 의미
+
+        // tempRow 역할은 리스트뷰의 "재 사용성"에서  나오는 "null" 가능성을 대비하기 위한 '임시' 변수
         var tempRow = convertView
 
         if (tempRow == null) {
-            // 레이아웃 ,  부가정보
+                                                  // 레이아웃 ,  부가정보
             tempRow = inf.inflate(R.layout.student_list_item, null)
         }
         // row = xml을 그려낸 객체 변수
         val row = tempRow!!
+        // if 문 빠져나온 후 , 원래 null 이면 -> 새로 그려서 넣어줌 , null이 아니라면 있는걸로 활용
+        // tempRow에 null일 가능성이 제거됨.
 
         // xml을 그린 row 객체 내부에서 , TextView등 같은걸 찾아서 실제 데이터로 연동하는것
         // 실제 데이터 = 어떤 학생 , mList의 position에 맞는 객체
@@ -50,7 +55,8 @@ class StudnetAdapter(
         val txtAge = row.findViewById<TextView>(R.id.txtAge)
 
         txtname.text = stdData.name
-        txtPhoneNum.text = stdData.phoneNum
+//        txtPhoneNum.text = stdData.phoneNum
+        txtPhoneNum.text = "{${stdData.getSimplePhoneNum()},{${stdData.phoneNum}}"
 
         // 계산이 가능하다.
 //        txtAge.text = "(${2023 - stdData.birthYear + 1}세)"
