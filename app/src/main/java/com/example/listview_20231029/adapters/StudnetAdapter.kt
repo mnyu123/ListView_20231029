@@ -9,6 +9,9 @@ import android.widget.TextView
 import com.example.listview_20231029.R
 import com.example.listview_20231029.datas.StudnetData
 
+// 어댑터를 쓰는 이유 : 안드로이드 앱은 PC보다 메모리 환경이 적기 때문에
+// 똑같은 요소를 붙여서 만들어버리면 앱 화면이 출력되기전에 OS에 의해 강제종료 되버림.
+
 // 어탭터를 만들었으면 상속 부터 받자.
 
 // 어떤 타입의 데이터를 받아올것인지 <> 로 설정해야함.
@@ -56,7 +59,8 @@ class StudnetAdapter(
 
         txtname.text = stdData.name
 //        txtPhoneNum.text = stdData.phoneNum
-        txtPhoneNum.text = "{${stdData.getSimplePhoneNum()},{${stdData.phoneNum}}"
+//        txtPhoneNum.text = "{${stdData.getSimplePhoneNum()},{${stdData.phoneNum}}"
+        txtPhoneNum.text = "${stdData.phoneNum}"
 
         // 계산이 가능하다.
 //        txtAge.text = "(${2023 - stdData.birthYear + 1}세)"
